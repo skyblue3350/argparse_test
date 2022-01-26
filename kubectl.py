@@ -16,11 +16,12 @@ parser_get = subparsers.add_parser("get", help="get resource")
 parser_delete = subparsers.add_parser("delete", help="delete resource")
 
 parser_get.add_argument("resource")
-parser_get.add_argument("resource_name")
+parser_get.add_argument("resource_name", default=None, nargs="?")
+parser_get.add_argument("--no-header", action="store_true")
 parser_get.set_defaults(handler=command_get)
 
 parser_delete.add_argument("resource")
-parser_delete.add_argument("resource_name")
+parser_delete.add_argument("resource_name", default=None, nargs="?")
 parser_delete.set_defaults(handler=command_delete)
 
 args = parser.parse_args()
